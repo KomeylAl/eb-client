@@ -1,0 +1,14 @@
+services:
+  client-panel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ebraz-client-panel
+    ports:
+      - "127.0.0.1:3003:3003"
+    environment:
+      BACKEND_API_URL: ${BACKEND_API_URL:-https://api.ebrazclinic.ir/}
+      NODE_ENV: production
+      PORT: 3003
+      HOSTNAME: 0.0.0.0
+    restart: unless-stopped
