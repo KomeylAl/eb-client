@@ -1,5 +1,5 @@
 services:
-  client-panel:
+  ebraz:
     build:
       context: .
       dockerfile: Dockerfile
