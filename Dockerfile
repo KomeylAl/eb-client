@@ -6,7 +6,8 @@ WORKDIR /app
 
 FROM base AS deps
 COPY package.json package-lock.json ./
-RUN npm ci
+# Prefer install over ci when lockfile may lag optional/platform transitive deps (emnapi, lightningcss).
+RUN npm install --no-audit --no-fund
 
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
